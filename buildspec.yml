@@ -8,7 +8,7 @@ phases:
       - echo "Setting up Docker..."
       - docker --version
       - echo "Logging in to Amazon ECR..."
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471203071529.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 47XXXXXXXXXXXXXXXXXXXX9.dkr.ecr.us-east-1.amazonaws.com
 
   pre_build:
     commands:
@@ -21,12 +21,12 @@ phases:
       - mvn clean install
       - echo "Building Docker image..."
       - docker build -t devclass1/repo1 .
-      - docker tag devclass1/repo1:latest 471203071529.dkr.ecr.us-east-1.amazonaws.com/devclass1/repo1:latest
+      - docker tag devclass1/repo1:latest 47XXXXXXXXXXXXXXXXXXXXXXXXX29.dkr.ecr.us-east-1.amazonaws.com/devclass1/repo1:latest
 
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - docker push 471203071529.dkr.ecr.us-east-1.amazonaws.com/devclass1/repo1:latest
+      - docker push 47XXXXXXXXXXXXXXXXXX9.dkr.ecr.us-east-1.amazonaws.com/devclass1/repo1:latest
       - echo "Build and push completed successfully!"
 
 artifacts:
