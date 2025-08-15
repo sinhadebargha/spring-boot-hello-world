@@ -5,13 +5,10 @@ phases:
     runtime-versions:
       java: corretto11
     commands:
-      - echo "Installing Docker..."
-      - yum install -y docker
-      - service docker start
-      - usermod -a -G docker ec2-user
+      - echo "Setting up Docker..."
       - docker --version
       - echo "Logging in to Amazon ECR..."
-      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471203071529.dkr.ecr.us-east-1.amazonaws.com)
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471203071529.dkr.ecr.us-east-1.amazonaws.com
 
   pre_build:
     commands:
